@@ -1,0 +1,63 @@
+<!-- src/app/shared/components/footer/footer.component.html -->
+<footer>
+  <div class="footer-inner">
+
+    <!-- Brand Column -->
+    <div class="footer-brand">
+      <img src="assets/images/sdi-logo.png" alt="SDi Shree Dev Industries" />
+      <p>
+        Jeevan Jyoti Shining Powder by Shree Dev Industries — India's most trusted metal
+        care brand. Bringing glass-like shine to homes, temples and businesses since 2008.
+      </p>
+      <span class="gstin">GSTIN: {{ contact.gstin }}</span>
+    </div>
+
+    <!-- Products Column -->
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li *ngFor="let link of links.products">
+          <a *ngIf="link.route; else fragLink" [routerLink]="link.route">{{ link.label }}</a>
+          <ng-template #fragLink>
+            <a routerLink="/" [fragment]="link.fragment">{{ link.label }}</a>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Company Column -->
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li *ngFor="let link of links.company">
+          <a *ngIf="link.route; else fragLink2" [routerLink]="link.route">{{ link.label }}</a>
+          <ng-template #fragLink2>
+            <a routerLink="/" [fragment]="link.fragment">{{ link.label }}</a>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Support Column -->
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a [href]="'tel:' + contact.phone">{{ contact.phone }}</a></li>
+        <li><a [href]="'mailto:' + contact.email">{{ contact.email }}</a></li>
+        <li><a routerLink="/shipping-policy">Shipping Policy</a></li>
+        <li><a routerLink="/return-policy">Returns & Refunds</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <p class="copy">© {{ year }} Shree Dev Industries. All rights reserved. | Jeevan Jyoti® Shining Powder</p>
+    <div class="legal-links">
+      <a routerLink="/privacy-policy">Privacy Policy</a>
+      <a routerLink="/terms">Terms of Use</a>
+      <a routerLink="/return-policy">Refund Policy</a>
+    </div>
+  </div>
+</footer>

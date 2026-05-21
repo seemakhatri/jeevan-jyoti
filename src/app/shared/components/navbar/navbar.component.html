@@ -1,0 +1,35 @@
+<!-- ─── NAVBAR ─── -->
+<nav id="mainNav">
+  <a href="#" class="nav-brand">
+    <img src="assets/images/SDI.png" alt="SDi">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#product">Product</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" onclick="showAdminLogin()">Admin</a></li>
+  </ul>
+<button class="nav-cart-btn" (click)="toggleCart()">
+
+  <div class="cart-icon-wrap">
+    <i class="uil uil-shopping-cart cart-icon"></i>
+    <div class="cart-count" id="cartCount">0</div>
+  </div>
+
+  <span>Cart</span>
+
+</button>
+  <div class="hamburger" onclick="toggleMobileNav()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#product" onclick="toggleMobileNav()">Product</a>
+  <a href="#benefits" onclick="toggleMobileNav()">Benefits</a>
+  <a href="#about" onclick="toggleMobileNav()">About Us</a>
+  <a href="#contact" onclick="toggleMobileNav()">Contact</a>
+  <a href="#" onclick="toggleMobileNav(); showAdminLogin()">Admin Panel</a>
+</div>

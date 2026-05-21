@@ -1,0 +1,84 @@
+<!-- src/app/pages/cart/cart.component.html -->
+<div class="cart-page">
+  <div class="cart-header-bar">
+    <h1 class="cart-title">Your Cart</h1>
+    <button class="back-btn" (click)="continueShopping()">← Continue Shopping</button>
+  </div>
+
+  <ng-container *ngIf="summary$ | async as summary">
+
+    <!-- Empty State -->
+    <div class="cart-empty" *ngIf="summary.items.length === 0">
+      <span class="empty-icon">🛒</span>
+      <h2>Your cart is empty</h2>
+      <p>Add Jeevan Jyoti Shining Powder to get started!</p>
+      <button class="btn-primary" (click)="continueShopping()">Shop Now</button>
+    </div>
+
+    <!-- Cart Content -->
+    <div class="cart-content" *ngIf="summary.items.length > 0">
+
+      <!-- Items List -->
+      <div class="cart-items">
+        <div class="cart-item" *ngFor="let item of summary.items">
+          <div class="item-img">
+            <img src="assets/images/bag-mockup.png" [alt]="item.weight + ' pack'" />
+          </div>
+
+          <div class="item-details">
+            <h3 class="item-name">Jeevan Jyoti Shining Powder</h3>
+            <p class="item-variant">{{ item.weight }} Pack</p>
+            <p class="item-unit-price">₹{{ item.price }} per pack</p>
+          </div>
+
+          <div class="item-qty-control">
+            <button class="qty-btn" (click)="decrement(item.weight)">−</button>
+            <span class="qty-val">{{ item.qty }}</span>
+            <button class="qty-btn" (click)="increment(item.weight)">+</button>
+          </div>
+
+          <div class="item-price">₹{{ item.price * item.qty }}</div>
+
+          <button class="remove-btn" (click)="remove(item.weight)" title="Remove item">✕</button>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="cart-summary">
+        <h3 class="summary-title">Order Summary</h3>
+
+        <div class="summary-row">
+          <span>Subtotal ({{ summary.itemCount }} item{{ summary.itemCount > 1 ? 's' : '' }})</span>
+          <span>₹{{ summary.subtotal }}</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span [class.free]="summary.shipping === 0">
+            {{ summary.shipping === 0 ? 'Free 🎉' : '₹' + summary.shipping }}
+          </span>
+        </div>
+
+        <div class="shipping-note" *ngIf="summary.shipping > 0">
+          Add ₹{{ 499 - summary.subtotal }} more for FREE shipping!
+        </div>
+
+        <div class="summary-total">
+          <span>Total</span>
+          <span class="total-amount">₹{{ summary.total }}</span>
+        </div>
+
+        <button class="checkout-btn" (click)="checkout()">
+          🔒 Proceed to Checkout
+        </button>
+
+        <div class="trust-badges">
+          <span>🔒 Secure Payment</span>
+          <span>🚚 Fast Shipping</span>
+          <span>↩️ Easy Returns</span>
+        </div>
+      </div>
+
+    </div>
+  </ng-container>
+</div>

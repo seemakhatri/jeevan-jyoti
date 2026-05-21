@@ -1,0 +1,280 @@
+<section class="hero" id="home">
+    <div class="hero-pattern"></div>
+
+    <div class="hero-content">
+        <div class="hero-badge">✦ India's No. 1 Metal Shining Powder</div>
+
+        <h1 class="hero-title">
+            Jeevan
+            <span>Jyoti</span>
+        </h1>
+        <p class="hero-subtitle">The No.1 Name in Trust</p>
+        <p class="hero-tagline">
+            One powder. <strong>Six metals.</strong> Glass-like shine every time.<br />
+            Trusted by families, temples &amp; businesses across India.
+        </p>
+
+        <div class="hero-cta-group">
+            <button class="btn-primary" (click)="buyNow()">Buy Now ₹{{ selectedVariant.price }}</button>
+            <button class="btn-secondary" (click)="scrollTo('benefits')">See Benefits</button>
+        </div>
+
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="hero-stat-num">50K+</span>
+                <span class="hero-stat-label">Happy Customers</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-num">6</span>
+                <span class="hero-stat-label">Metals</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-num">PAN</span>
+                <span class="hero-stat-label">India Shipping</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-image-wrap">
+        <div class="hero-glow"></div>
+        <img src="assets/images/pouch1.png" alt="Jeevan Jyoti Shining Powder" class="hero-bag" />
+        <div class="shine-badge">
+            <span>✦</span>GLASS<br />LIKE<br />SHINE
+        </div>
+    </div>
+
+    <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
+    </div>
+</section>
+
+<!-- ─── TRUST BAR ─────────────────────────────────────────────────────────── -->
+<div class="trust-bar">
+
+    <div class="trust-item">
+        <i class="uil uil-truck trust-icon"></i>
+        <span>Free Shipping Above ₹499</span>
+    </div>
+
+    <div class="trust-item">
+        <i class="uil uil-shield-check trust-icon"></i>
+        <span>Secure Razorpay Checkout</span>
+    </div>
+
+    <div class="trust-item">
+        <i class="uil uil-industry trust-icon"></i>
+        <span>Direct from Manufacturer</span>
+    </div>
+
+    <div class="trust-item">
+        <i class="uil uil-redo trust-icon"></i>
+        <span>Easy Returns</span>
+    </div>
+
+    <div class="trust-item">
+        <i class="uil uil-map-marker trust-icon"></i>
+        <span>Ships Pan India</span>
+    </div>
+
+</div>
+
+<!-- ─── BENEFITS ──────────────────────────────────────────────────────────── -->
+<section class="benefits-section" id="benefits">
+    <div class="section-header">
+        <span class="section-eyebrow">Why Choose Us</span>
+        <h2 class="section-title">Made for <span>Perfect Shine</span></h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="benefits-grid">
+        <div class="benefit-card" *ngFor="let b of benefits">
+            <i class="benefit-icon" [class]="b.icon"></i>
+            <div class="benefit-title">{{ b.title }}</div>
+            <div class="benefit-desc">{{ b.desc }}</div>
+        </div>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ─── METALS ────────────────────────────────────────────────────────────── -->
+<section class="metals-section" id="metals">
+    <div class="section-header">
+        <span class="section-eyebrow" style="color: var(--gold-light)">Works On</span>
+        <h2 class="section-title" style="color: white">
+            6 Metals, <span style="color: var(--gold-light)">1 Powder</span>
+        </h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="metals-grid">
+        <div class="metal-card" *ngFor="let m of metals">
+            <i class="benefit-icon" [class]="m.icon"></i>
+            <span class="metal-name">{{ m.name }}</span>
+        </div>
+    </div>
+</section>
+
+<!-- ─── PRODUCT ───────────────────────────────────────────────────────────── -->
+<section class="product-section" id="product">
+    <div class="product-layout">
+
+        <!-- Product Image -->
+        <div class="product-image-container">
+            <div class="product-bg-circle">
+                <img src="assets/images/bag-mockup.png" alt="Jeevan Jyoti Shining Powder" class="product-bag" />
+            </div>
+            <div class="product-badges">
+                <span class="product-badge-tag">✦ Best Seller</span>
+                <span class="product-badge-tag">🏭 Direct MFR</span>
+                <span class="product-badge-tag">🚚 Pan India</span>
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+            <p class="product-brand">SDI · Shree Dev Industries</p>
+            <h2 class="product-name">Jeevan Jyoti</h2>
+            <p class="product-subtitle">Shining Powder</p>
+
+            <div class="product-stars">
+                ★★★★★ <span>(1,240+ Reviews)</span>
+            </div>
+
+            <p class="product-desc">
+                India's most trusted metal cleaning powder. Used by households, temples, restaurants,
+                and industrial units across the country. One application gives an instant glass-like
+                mirror finish.
+            </p>
+
+            <ul class="product-features">
+                <li>Glass-like mirror finish in minutes</li>
+                <li>Works on 6 metals — Brass, Copper, Silver, Steel, Aluminium, Iron</li>
+                <li>Scratch-free ultra-fine formula</li>
+                <li>Zero metal loss guaranteed</li>
+                <li>Safe for food-grade utensils &amp; pooja items</li>
+            </ul>
+
+            <!-- Variant Selection -->
+            <p class="field-label">Select Size</p>
+            <div class="variants-grid">
+                <button class="variant-btn" *ngFor="let v of variants"
+                    [class.active]="selectedVariant.weight === v.weight" (click)="selectVariant(v)">
+                    <span class="variant-weight">{{ v.weight }}</span>
+                    <span class="variant-price">₹{{ v.price }}</span>
+                </button>
+            </div>
+
+            <!-- Price Display -->
+            <div class="price-display">
+                <span class="price-main">₹{{ selectedVariant.price }}</span>
+                <span class="price-strike">₹{{ selectedVariant.mrp }}</span>
+                <span class="price-save">Save {{ selectedVariant.saving }}%</span>
+            </div>
+
+            <!-- Quantity -->
+            <div class="qty-row">
+                <span class="field-label">Qty</span>
+                <div class="qty-control">
+                    <button class="qty-btn" (click)="decrementQty()">−</button>
+                    <span class="qty-value">{{ qty }}</span>
+                    <button class="qty-btn" (click)="incrementQty()">+</button>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <button class="add-to-cart-btn" (click)="addToCart()">🛒 Add to Cart</button>
+            <button class="buy-now-btn" (click)="buyNow()">⚡ Buy Now — Pay Securely</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ─── BEFORE / AFTER ─────────────────────────────────────────────────────── -->
+<section class="ba-section">
+    <div class="section-header">
+        <span class="section-eyebrow" style="color: var(--gold-light)">See the Difference</span>
+        <h2 class="section-title" style="color: white">
+            Before &amp; <span style="color: var(--gold-light)">After</span>
+        </h2>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="ba-container">
+        <div class="ba-slider-wrap" #baSlider>
+            <div class="ba-before" #baBefore>
+                <span style="font-size: 4rem">🤎</span>
+                <span class="ba-caption">Dull, tarnished, stained</span>
+                <span class="ba-label">BEFORE</span>
+            </div>
+            <div class="ba-after">
+                <span style="font-size: 4rem">✨</span>
+                <span class="ba-caption" style="color: rgba(74,28,10,0.8); font-weight: 700">
+                    Gleaming, mirror-finish shine
+                </span>
+                <span class="ba-label" style="right: 20px">AFTER</span>
+            </div>
+            <div class="ba-handle" #baHandle></div>
+        </div>
+        <p class="ba-hint">Drag slider to compare</p>
+
+        <div class="ba-items">
+            <div class="ba-item">
+                <span class="ba-item-emoji">🔔</span>
+                <h4>Brass Pooja Thali</h4>
+                <p>Removes years of tarnish and black oxide in just 60 seconds</p>
+            </div>
+            <div class="ba-item">
+                <span class="ba-item-emoji">🥄</span>
+                <h4>Silver Cutlery</h4>
+                <p>Brings back the original gloss without scratching the surface</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── TESTIMONIALS ──────────────────────────────────────────────────────── -->
+<section class="testimonials-section">
+    <div class="section-header">
+        <span class="section-eyebrow">Customer Love</span>
+        <h2 class="section-title">What Our <span>Customers Say</span></h2>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="testimonials-grid">
+        <div class="testimonial-card" *ngFor="let t of testimonials">
+            <div class="testimonial-quote">"</div>
+            <p class="testimonial-text">{{ t.text }}</p>
+            <div class="testimonial-author">
+                <div class="testimonial-avatar">{{ t.initials }}</div>
+                <div>
+                    <div class="testimonial-name">{{ t.name }}</div>
+                    <div class="testimonial-location">{{ t.location }}</div>
+                    <div class="testimonial-stars">{{ getRatingStars(t.rating) }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── CTA BANNER ────────────────────────────────────────────────────────── -->
+<section class="cta-banner">
+    <div class="cta-content">
+        <h2 class="cta-title">Ready for a Glass-Like Shine?</h2>
+        <p class="cta-subtitle">Join 50,000+ happy customers across India</p>
+        <div class="cta-btns">
+            <button class="btn-primary" (click)="buyNow()">Order Now — Starting ₹49</button>
+            <a href="tel:9928937111" class="btn-call">📞 Call to Order</a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── STICKY BUY BAR ─────────────────────────────────────────────────────── -->
+<div class="sticky-buy" [class.visible]="showStickyBuy">
+    <div>
+        <div class="sticky-price">
+            ₹{{ selectedVariant.price }}
+            <small>/ {{ selectedVariant.weight }}</small>
+        </div>
+        <div class="sticky-rating">⭐ 4.9 · 1,240+ Reviews</div>
+    </div>
+    <button class="sticky-btn" (click)="buyNow()">Buy Now ⚡</button>
+</div>
