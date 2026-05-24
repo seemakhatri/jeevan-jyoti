@@ -11,6 +11,7 @@ interface Variant {
   price: number;
   mrp: number;
   saving: number;
+  tag?: string;
 }
 
 interface Testimonial {
@@ -31,15 +32,29 @@ export class HomeComponent {
   @ViewChild('baBefore') baBeforeRef!: ElementRef<HTMLDivElement>;
   @ViewChild('baHandle') baHandleRef!: ElementRef<HTMLDivElement>;
 
-  // ── Variants ─────────────────────────────────────────────────────────────────
-  variants: Variant[] = Object.entries(PRODUCT_VARIANTS).map(
-    ([weight, data]) => ({
-      weight,
-      price: data.price,
-      mrp: data.mrp,
-      saving: Math.round((1 - data.price / data.mrp) * 100),
-    }),
-  );
+variants: Variant[] = [
+  {
+    weight: '100gm',
+    price: 28,
+    mrp: 30,
+    saving: 7,
+    tag: 'TRIAL',
+  },
+  {
+    weight: '150gm',
+    price: 38,
+    mrp: 40,
+    saving: 5,
+    tag: 'POPULAR',
+  },
+  {
+    weight: '200gm',
+    price: 45,
+    mrp: 50,
+    saving: 10,
+    tag: 'BEST VALUE',
+  },
+];
 
   selectedVariant: Variant = this.variants[0];
   qty = 1;

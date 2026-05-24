@@ -1,38 +1,30 @@
 import { Component } from '@angular/core';
+import { CartService } from 'src/app/core/services/cart.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-
-  cartCount = 0;
+ cartCount$ = this.cartService.itemCount$;
 
   isMobileNavOpen = false;
 
-  // ─── CART TOGGLE ─────────────────────────────────────────
-  toggleCart(): void {
-    console.log('Open Cart Drawer / Modal');
+  constructor(private cartService: CartService) {}
 
-    // Example:
-    // this.cartService.toggleCart();
+toggleCart(): void {
+  this.cartService.toggleCart();
+}
 
-    // TEMP DEMO
-    alert('Cart Opened');
-  }
-
-  // ─── MOBILE NAV ──────────────────────────────────────────
   toggleMobileNav(): void {
     this.isMobileNavOpen = !this.isMobileNavOpen;
   }
 
-  // ─── ADMIN LOGIN ─────────────────────────────────────────
   showAdminLogin(): void {
     console.log('Open Admin Login');
 
     // Example:
     // this.router.navigate(['/admin']);
   }
-
 }

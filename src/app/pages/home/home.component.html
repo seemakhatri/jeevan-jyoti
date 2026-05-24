@@ -2,7 +2,7 @@
     <div class="hero-pattern"></div>
 
     <div class="hero-content">
-        <div class="hero-badge">✦ India's No. 1 Metal Shining Powder</div>
+        <div class="hero-badge"> India's No. 1 Metal Shining Powder</div>
 
         <h1 class="hero-title">
             Jeevan
@@ -62,7 +62,7 @@
     </div>
 
     <div class="trust-item">
-        <i class="uil uil-industry trust-icon"></i>
+  <i class="uil uil-building trust-icon"></i>
         <span>Direct from Manufacturer</span>
     </div>
 
@@ -120,7 +120,7 @@
         <!-- Product Image -->
         <div class="product-image-container">
             <div class="product-bg-circle">
-                <img src="assets/images/bag-mockup.png" alt="Jeevan Jyoti Shining Powder" class="product-bag" />
+                <img src="assets/images/pouch1.png" alt="Jeevan Jyoti Shining Powder" class="product-bag" />
             </div>
             <div class="product-badges">
                 <span class="product-badge-tag">✦ Best Seller</span>
@@ -155,21 +155,39 @@
 
             <!-- Variant Selection -->
             <p class="field-label">Select Size</p>
+
             <div class="variants-grid">
+
                 <button class="variant-btn" *ngFor="let v of variants"
                     [class.active]="selectedVariant.weight === v.weight" (click)="selectVariant(v)">
-                    <span class="variant-weight">{{ v.weight }}</span>
-                    <span class="variant-price">₹{{ v.price }}</span>
+
+                    <!-- Top -->
+                    <div class="variant-top">
+                        <span class="variant-weight">
+                            {{ v.weight }}
+                        </span>
+
+                        <span class="variant-save">
+                            Save ₹{{ v.mrp - v.price }}
+                        </span>
+                    </div>
+
+                    <!-- Bottom -->
+                    <div class="variant-bottom">
+
+                        <span class="variant-price">
+                            ₹{{ v.price }}
+                        </span>
+
+                        <span class="variant-mrp">
+                            ₹{{ v.mrp }}
+                        </span>
+
+                    </div>
+
                 </button>
-            </div>
 
-            <!-- Price Display -->
-            <div class="price-display">
-                <span class="price-main">₹{{ selectedVariant.price }}</span>
-                <span class="price-strike">₹{{ selectedVariant.mrp }}</span>
-                <span class="price-save">Save {{ selectedVariant.saving }}%</span>
             </div>
-
             <!-- Quantity -->
             <div class="qty-row">
                 <span class="field-label">Qty</span>
@@ -181,54 +199,102 @@
             </div>
 
             <!-- CTA Buttons -->
-            <button class="add-to-cart-btn" (click)="addToCart()">🛒 Add to Cart</button>
-            <button class="buy-now-btn" (click)="buyNow()">⚡ Buy Now — Pay Securely</button>
+            <button class="add-to-cart-btn" (click)="addToCart()"> <i class="uil uil-shopping-cart cart-icon"></i> Add
+                to Cart</button>
+            <button class="buy-now-btn" (click)="buyNow()"> Buy Now — Pay Securely</button>
         </div>
 
     </div>
 </section>
-
 <!-- ─── BEFORE / AFTER ─────────────────────────────────────────────────────── -->
 <section class="ba-section">
+
     <div class="section-header">
-        <span class="section-eyebrow" style="color: var(--gold-light)">See the Difference</span>
+        <span class="section-eyebrow" style="color: var(--gold-light)">
+            See the Difference
+        </span>
+
         <h2 class="section-title" style="color: white">
-            Before &amp; <span style="color: var(--gold-light)">After</span>
+            Before &amp;
+            <span style="color: var(--gold-light)">After</span>
         </h2>
+
         <div class="section-line"></div>
     </div>
 
     <div class="ba-container">
-        <div class="ba-slider-wrap" #baSlider>
-            <div class="ba-before" #baBefore>
-                <span style="font-size: 4rem">🤎</span>
-                <span class="ba-caption">Dull, tarnished, stained</span>
-                <span class="ba-label">BEFORE</span>
-            </div>
-            <div class="ba-after">
-                <span style="font-size: 4rem">✨</span>
-                <span class="ba-caption" style="color: rgba(74,28,10,0.8); font-weight: 700">
-                    Gleaming, mirror-finish shine
-                </span>
-                <span class="ba-label" style="right: 20px">AFTER</span>
-            </div>
-            <div class="ba-handle" #baHandle></div>
-        </div>
-        <p class="ba-hint">Drag slider to compare</p>
 
+        <div class="ba-slider-wrap" #baSlider>
+
+            <!-- AFTER IMAGE -->
+            <div class="ba-after">
+
+                <img
+                    src="assets/images/before-after.png"
+                    alt="After Cleaning"
+                    class="ba-img"
+                />
+
+                <span
+                    class="ba-label"
+                    style="right: 20px; left: auto;"
+                >
+                    AFTER
+                </span>
+
+            </div>
+
+            <!-- BEFORE IMAGE -->
+            <div class="ba-before" #baBefore>
+
+                <img
+                    src="assets/images/before-after.png"
+                    alt="Before Cleaning"
+                    class="ba-img"
+                />
+
+                <span class="ba-label">
+                    BEFORE
+                </span>
+
+            </div>
+
+            <!-- HANDLE -->
+            <div class="ba-handle" #baHandle></div>
+
+        </div>
+
+        <p class="ba-hint">
+            Drag slider to compare
+        </p>
+
+        <!-- ITEMS -->
         <div class="ba-items">
+
             <div class="ba-item">
                 <span class="ba-item-emoji">🔔</span>
+
                 <h4>Brass Pooja Thali</h4>
-                <p>Removes years of tarnish and black oxide in just 60 seconds</p>
+
+                <p>
+                    Removes years of tarnish and black oxide in just 60 seconds
+                </p>
             </div>
+
             <div class="ba-item">
                 <span class="ba-item-emoji">🥄</span>
+
                 <h4>Silver Cutlery</h4>
-                <p>Brings back the original gloss without scratching the surface</p>
+
+                <p>
+                    Brings back the original gloss without scratching the surface
+                </p>
             </div>
+
         </div>
+
     </div>
+
 </section>
 
 <!-- ─── TESTIMONIALS ──────────────────────────────────────────────────────── -->
@@ -261,20 +327,9 @@
         <h2 class="cta-title">Ready for a Glass-Like Shine?</h2>
         <p class="cta-subtitle">Join 50,000+ happy customers across India</p>
         <div class="cta-btns">
-            <button class="btn-primary" (click)="buyNow()">Order Now — Starting ₹49</button>
+            <button class="btn-primary" (click)="buyNow()">Order Now — Starting ₹28</button>
             <a href="tel:9928937111" class="btn-call">📞 Call to Order</a>
         </div>
     </div>
 </section>
 
-<!-- ─── STICKY BUY BAR ─────────────────────────────────────────────────────── -->
-<div class="sticky-buy" [class.visible]="showStickyBuy">
-    <div>
-        <div class="sticky-price">
-            ₹{{ selectedVariant.price }}
-            <small>/ {{ selectedVariant.weight }}</small>
-        </div>
-        <div class="sticky-rating">⭐ 4.9 · 1,240+ Reviews</div>
-    </div>
-    <button class="sticky-btn" (click)="buyNow()">Buy Now ⚡</button>
-</div>

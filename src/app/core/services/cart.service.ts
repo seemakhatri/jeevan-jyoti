@@ -33,6 +33,9 @@ const STORAGE_KEY = 'jj_cart';
 export class CartService {
 
   private _items$ = new BehaviorSubject<CartItem[]>(this.loadFromStorage());
+  private _cartSidebarOpen$ = new BehaviorSubject<boolean>(false);
+
+cartSidebarOpen$ = this._cartSidebarOpen$.asObservable();
 
   // ── Public Observables ───────────────────────────────────────────────────────
   items$: Observable<CartItem[]> = this._items$.asObservable();
@@ -106,6 +109,21 @@ export class CartService {
   }
 
   // ── Private ───────────────────────────────────────────────────────────────────
+
+  toggleCart(): void {
+  this._cartSidebarOpen$.next(
+    !this._cartSidebarOpen$.value
+  );
+}
+
+openCart(): void {
+  this._cartSidebarOpen$.next(true);
+}
+
+closeCart(): void {
+  this._cartSidebarOpen$.next(false);
+}
+
   private emit(items: CartItem[]): void {
     this._items$.next(items);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));

@@ -1,1 +1,129 @@
-<p>cart-sidebar works!</p>
+<!-- Overlay -->
+<div class="cart-overlay" [class.show]="isOpen" (click)="close()"></div>
+
+<!-- Sidebar -->
+<aside class="cart-sidebar" [class.open]="isOpen">
+
+    <!-- Header -->
+    <div class="cart-header">
+
+        <div>
+            <p class="cart-mini-title">
+                Your Cart
+            </p>
+
+            <h2 class="cart-title">
+                Shopping Bag
+            </h2>
+        </div>
+
+        <button class="cart-close" (click)="close()">
+            ✕
+        </button>
+
+    </div>
+
+    <!-- Items -->
+    <div class="cart-items" *ngIf="summary$ | async as summary">
+
+        <div class="cart-item" *ngFor="let item of summary.items">
+
+            <!-- Product -->
+            <div class="cart-product">
+
+                <div class="cart-image-wrap">
+                    <img src="assets/images/pouch1.png" alt="Jeevan Jyoti" />
+                </div>
+
+                <div class="cart-info">
+
+                    <h4>
+                        Jeevan Jyoti
+                    </h4>
+
+                    <p>
+                        {{ item.weight }}
+                    </p>
+
+                    <div class="cart-price-row">
+
+                        <span class="cart-price">
+                            ₹{{ item.price }}
+                        </span>
+
+                        <span class="cart-mrp">
+                            ₹{{ item.mrp }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Actions -->
+            <div class="cart-actions">
+
+                <div class="qty-control">
+
+                    <button class="qty-btn" (click)="decrement(item.weight)">
+                        −
+                    </button>
+
+                    <span class="qty-value">
+                        {{ item.qty }}
+                    </span>
+
+                    <button class="qty-btn" (click)="increment(item.weight)">
+                        +
+                    </button>
+
+                </div>
+
+                <button class="remove-btn" (click)="remove(item.weight)">
+                    Remove
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Empty -->
+        <div class="empty-cart" *ngIf="summary.items.length === 0">
+            <div class="empty-icon">
+                🛒
+            </div>
+
+            <h3>
+                Your cart is empty
+            </h3>
+
+            <p>
+                Add your first product and experience the shine.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="cart-footer" *ngIf="summary$ | async as summary">
+
+        <div class="cart-total-row">
+
+            <span>
+                Total
+            </span>
+
+            <strong>
+                ₹{{ summary.total }}
+            </strong>
+
+        </div>
+
+        <button class="checkout-btn" (click)="checkout()" [disabled]="summary.items.length === 0">
+            Proceed to Checkout
+        </button>
+
+    </div>
+
+</aside>
